@@ -13,7 +13,7 @@ def createFolder(path):
 labels = ['one', 'two', 'three', 'four', 'five']
 number_imgs = sys.argv[1]
 
-IMAGES_PATH = os.path.join('images', 'training')
+IMAGES_PATH = os.path.join('images', 'collected')
 createFolder(IMAGES_PATH)
 
 for label in labels:

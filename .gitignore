@@ -1,0 +1,8 @@
+/tfod
+/resources/*
+!/resources/.gitkeep
+/.ipynb_checkpoints
+/ipynb_checkpoints
+.ipynb_checkpoints
+/images/*
+!/images/.gitkeep

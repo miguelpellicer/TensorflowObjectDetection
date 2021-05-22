@@ -5,7 +5,7 @@ import time
 import sys
 
 
-def createFolder(path):
+def create_folder(path):
     if not os.path.exists(path):
         os.mkdir(path)
 
@@ -13,12 +13,16 @@ def createFolder(path):
 labels = ['one', 'two', 'three', 'four', 'five']
 number_imgs = sys.argv[1]
 
-IMAGES_PATH = os.path.join('images', 'collected')
-createFolder(IMAGES_PATH)
+COLLECTED_PATH = os.path.join('images', 'collected')
+TEST_PATH = os.path.join('images', 'test')
+TRAIN_PATH = os.path.join('images', 'train')
+create_folder(COLLECTED_PATH)
+create_folder(TEST_PATH)
+create_folder(TRAIN_PATH)
 
 for label in labels:
-    path = os.path.join(IMAGES_PATH, label)
-    createFolder(path)
+    path = os.path.join(COLLECTED_PATH, label)
+    create_folder(path)
 
     cap = cv2.VideoCapture(0)  # CONNECTS TO WEBCAM (if error, change port)
     print('Collecting images for {}'.format(label))
@@ -26,7 +30,7 @@ for label in labels:
     for imgnum in range(number_imgs):
         print('Collecting image {}'.format(imgnum))
         ret, frame = cap.read()
-        imgname = os.path.join(IMAGES_PATH, label, label +'.'+'{}.jpg'.format(str(uuid.uuid1())))
+        imgname = os.path.join(COLLECTED_PATH, label, label +'.'+'{}.jpg'.format(str(uuid.uuid1())))
         cv2.imwrite(imgname, frame)
         cv2.imshow('frame', frame)
         time.sleep(3)
